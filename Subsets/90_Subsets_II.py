@@ -13,3 +13,19 @@ class Solution:
                 miniSet.append(nums[i])
                 subsets.append(miniSet)
         return subsets
+
+# BackTracking TC: O(n * 2^n) SC: O(n)
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        result = set()
+        def backtrack(i, subset):
+            if i == len(nums):
+                result.add(tuple(subset))
+                return
+            subset.append(nums[i])
+            backtrack(i + 1, subset)
+            subset.pop()
+            backtrack(i + 1, subset)
+        nums.sort()
+        backtrack(0, [])
+        return [list(s) for s in result]
