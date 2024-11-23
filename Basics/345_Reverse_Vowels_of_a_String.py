@@ -1,14 +1,22 @@
+# Approach: Two Pointers
+# TC: O(n) -> Each char is checked at most once
+# SC: O(n) -> charStore(O(10) -> O(1)), arr(O(n)), left, right(O(1))
 class Solution:
-    vowels = "aeiouAEIOU"
     def reverseVowels(self, s: str) -> str:
-        l, r = 0, len(s) - 1
+        # convert all the vowels into a set 
+        charStore = set("AEIOUaeiou")
+        # initialize pointers for start and end of the string
+        left, right = 0, len(s) - 1
         arr = list(s)
-        while l < r:
-            while l < r and self.vowels.find(arr[l]) == -1:
-                l += 1
-            while l < r and self.vowels.find(arr[r]) == -1:
-                r -= 1
-            arr[l], arr[r] = arr[r], arr[l]
-            l += 1
-            r -= 1
+        while left < right:
+            # increment the left pointer until a vowel is found
+            while left < right and arr[left] not in charStore:
+                left += 1
+            # decrement the right pointer until a vowel is found
+            while left < right and arr[right] not in charStore:
+                right -= 1
+            # swap the values of left and right if both are vowels
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
         return "".join(arr)
