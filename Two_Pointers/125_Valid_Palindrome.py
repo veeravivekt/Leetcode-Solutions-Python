@@ -1,26 +1,23 @@
-# Similar to my java solution
+# Approach: Two Pointers
+# TC: O(n) -> each char is checked at most once
+# SC: O(1) -> left, right
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        left = 0
-        right = len(s) - 1
-        while (left < right):
-            if not s[left].isalnum():
+        # initialize two pointers left and right
+        left, right = 0, len(s) - 1
+        # continue till they cross over
+        while left < right:
+            # while not alnum increment left
+            while left < right and not s[left].isalnum():
                 left += 1
-                continue
-            if not s[right].isalnum():
+            # while not alnum increment right
+            while left < right and not s[right].isalnum():
                 right -= 1
-                continue
-            if (s[left].lower() != s[right].lower()):
+            # compare if left and right are equal after converting to lowercase
+            if s[left].lower() != s[right].lower():
                 return False
+            # move pointers
             left += 1
             right -= 1
+        # return true if all characters matches and loop ends
         return True
-    
-# Here is a Python explicit
-class Solution:
-    def isPalindrome(self, s: str) -> bool:
-        new = ''
-        for a in s:
-            if a.isalpha() or a.isdigit(): # can also use a.isalnum()
-                new += a.lower()
-        return new == new[::-1]
