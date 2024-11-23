@@ -1,6 +1,12 @@
 # Approach: Two Pointers
-# TC: O(n) -> Each char is checked at most once
-# SC: O(n) -> charStore(O(10) -> O(1)), arr(O(n)), left, right(O(1))
+# EC: case sensitive, maxlen of str, non-alpha?, empty, all non-vowel
+"""
+vowels = aeiouAEIOU
+"IceCreAm"
+ l      r
+AceCreIm
+AceCreIm
+"""
 class Solution:
     def reverseVowels(self, s: str) -> str:
         # convert all the vowels into a set 
@@ -20,3 +26,5 @@ class Solution:
             left += 1
             right -= 1
         return "".join(arr)
+# TC: O(n) -> Each char is checked at most once(O(n)) + set conv(O(10) = O(1))
+# SC: O(n) -> charStore(O(10) -> O(1)), arr(O(n)), left, right(O(1))
