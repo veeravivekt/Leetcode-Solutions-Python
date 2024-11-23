@@ -28,3 +28,28 @@ class Solution:
         return True
 # TC: O(n) -> each character from each strings is checked atmost once
 # SC: O(1) -> charStore(O(26)), i(O(1))
+
+
+
+# Follow up: Unicode Characters
+# hashmap would be more suitable for these situations
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        # if lengths are diff return false
+        if len(s) != len(t):
+            return False
+        # intialize a hashmap to store count of unicode chars
+        charStore = {}
+        # iterate throught all chars of s and t
+        for i in range(len(s)):
+            # add count to charStore for s
+            charStore[s[i]] = charStore.get(s[i], 0) + 1
+            # subtract count to charStore for t
+            charStore[t[i]] = charStore.get(t[i], 0) - 1
+        # verify if all values in charStore are 0
+        for v in charStore.values():
+            if v != 0:
+                return False
+        return True
+# TC: O(n) -> every char is checked atmost once O(n) + every value in charStore (O(26))
+# SC: O(n) -> charStore for n unique chars
