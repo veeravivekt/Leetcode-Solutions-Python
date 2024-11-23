@@ -4,7 +4,6 @@
 [1,2,3,1,1,3]
  0 1 2 3 4 5
 pairs = 0,3 0,4 2,5 3,4
-
 count = 2 + 0 + 1 + 1 + 0 + 0
  1 : 3
  2 : 1
@@ -26,4 +25,4 @@ class Solution:
         # return answer
         return result
 # TC: O(n) -> counting nums(O(n)) + iterate each num(O(n))
-# SC: O(n) -> store O(n) worst case if all are unique
+# SC: O(n) -> store O(n worst case if all are unique)
