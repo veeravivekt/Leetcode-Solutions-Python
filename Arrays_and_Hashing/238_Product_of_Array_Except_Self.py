@@ -1,6 +1,6 @@
 # EC: maxlen of nums?, range of each num?, negative nums?, zero?, all ones?
 """
- nums = 
+nums = 
 [1,2,3,4]
 -> [1, 1, 2, 6]
 1 * 1, 1 * 2, 2 * 3
